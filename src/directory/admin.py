@@ -3,3 +3,6 @@ from . import models
 
 admin.site.register(models.Genre)
 admin.site.register(models.Books)
+admin.site.register(models.Author)
+admin.site.register(models.Series)
+admin.site.register(models.Publish)
