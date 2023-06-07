@@ -43,9 +43,10 @@ class Books(models.Model):
         max_length=50
     )
     Genre = models.ForeignKey(
-        Genre,
+        "directory.Genre",
         on_delete=models.PROTECT,
-        verbose_name='Genre'
+        verbose_name='Genre',
+        related_name="Books"
     )
     description = models.TextField(
         verbose_name='Books discription',

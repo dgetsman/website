@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from . import models
 
 def home_page(request):
-    Books = models.Books.objects.filter(pk__lt=10)
+    Books = models.Books.objects.filter(pk__lt=100)
     return render(request,
                    template_name='view-html/home-page.html',
                    context={'objects':Books})
@@ -15,8 +15,45 @@ def veiw_books(request, pk):
     return HttpResponse(html)
 
 def add_books(request):
-    return render(
-        request,
-        template_name='view-html/add-books.html',
-        context={}
+    if request.method == "GET":
+        genre = models.Genre.objects.all
+        return render(
+            request,
+            template_name='view-html/add-books.html',
+            context={"genres":genre, "greeting":"Add a new book"})
+    else:
+        book_name = request.POST.get("book_name")
+        genre_id = request.POST.get("Genre")
+        genre_all = models.Genre.objects.all
+        genre = models.Genre.objects.get(pk=int(genre_id))
+        new_book = models.Books.objects.create(name=book_name, Genre=genre)
+        return render(request,
+            template_name='view-html/add-books.html',
+            context={"genres":genre_all, "greeting":f"Book {book_name} was created"}
 )
+    
+def success(request):
+    return render(
+    request,
+        template_name="view-html/success.html",
+        context={"message":"Book was edited"}
+    )
+
+def update_books(request, pk):
+    if request.method == "GET":
+        genre = models.Genre.objects.all()
+        book = models.Books.objects.get(pk=pk)
+        return render(
+            request,
+            template_name='view-html/update-books.html',
+            context={"object":book, "genres":genre, "greeting":"Edit the book"})
+    else:
+        book_name = request.POST.get("book_name")
+        genre_id = request.POST.get("Genre")
+        genre_all = models.Genre.objects.all
+        genre = models.Genre.objects.get(pk=int(genre_id))
+        new_book = models.Books.objects.update(name=book_name, Genre=genre)
+        return render(request,
+            template_name='view-html/success.html',
+            context={"genres":genre_all, "greeting":f"Book {book_name} was edited"}
+        )

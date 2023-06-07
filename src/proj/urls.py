@@ -23,4 +23,6 @@ urlpatterns = [
     path('dir/', views.home_page),
     path('books/<int:pk>', views.veiw_books),
     path('add-books/', views.add_books),
+    path('update-book/<int:pk>', views.update_books),
+    path('edit-success/', views.success)
 ]
