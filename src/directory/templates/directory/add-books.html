@@ -10,13 +10,7 @@
     <h1>{{ greeting }}</h1>
     <form action="" method="post">
         {% csrf_token %}
-        <select name="Genre" id=" ">
-            <option value=" ">--Select genre--</option>
-            {% for genre in genres %}
-            <option value="{{ genre.pk }}">{{ genre.name }}</option>
-            {% endfor %}
-        </select><br>
-        <input type="text" name="book_name">
+        {{ form.as_p }}
         <button type="submit">Add book</button>
 </body>
 </html>

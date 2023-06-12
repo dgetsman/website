@@ -11,11 +11,13 @@
         <tr>
             <td>PK</td>
             <td>Name</td>
+            <td>Genre</td>
         </tr>
         {% for object in objects %}
         <tr>
             <td>ID: {{object.pk}}</td>
             <td>Book name:{{object.name}}</td>
+            <td>Genre:{{object.Genre}}</td>
         </tr>
         {% endfor %}
     </table>

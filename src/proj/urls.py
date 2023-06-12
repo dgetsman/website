@@ -22,7 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dir/', views.home_page),
     path('books/<int:pk>', views.veiw_books),
-    path('add-books/', views.add_books),
-    path('update-book/<int:pk>', views.update_books),
-    path('edit-success/', views.success)
+    path('books-view/<int:pk>', views.BooksView.as_view()),
+    #path('add-books/', views.add_books),
+    path('add-books-view/', views.BooksCreareView.as_view()),
+    path('update-books-view/<int:pk>', views.BooksUpdateView.as_view()),
+    #path('update-book/<int:pk>', views.update_books),
+    path('edit-success/', views.success),
+    path('',views.HomePage.as_view())
 ]
