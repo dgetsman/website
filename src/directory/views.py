@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts import render
 from random import randint
 from django.http import HttpResponse
@@ -25,9 +26,23 @@ class BooksUpdateView(generic.UpdateView):
         "Genre", "name"
     ]
     success_url = "/edit-success"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['message']='Edit the book'
+        return context
+
+class BooksDeleteView(generic.DeleteView):
+    model = models.Books
+    template_name = 'directory/delete-book.html'
+    success_url = "/dir"
 
 class BooksView(generic.DetailView):
     model = models.Books
+    
+class BooksListView(generic.ListView):
+    model = models.Books
+    template_name = 'directory/books-list-view.html'
+    paginate_by = 10
 
 def home_page(request):
     Books = models.Books.objects.filter(pk__lt=100)
@@ -35,7 +50,7 @@ def home_page(request):
                    template_name='directory/home-page.html',
                    context={'objects':Books})
 
-def veiw_books(request, pk):
+#def veiw_books(request, pk):
     Books = models.Books.objects.get(pk=int(pk))
     html = f"Books PK:{Books.pk} Books Name {Books.name}"
     return HttpResponse(html)

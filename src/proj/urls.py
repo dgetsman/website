@@ -21,12 +21,14 @@ from directory import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dir/', views.home_page),
-    path('books/<int:pk>', views.veiw_books),
+    #path('books/<int:pk>', views.veiw_books),
     path('books-view/<int:pk>', views.BooksView.as_view()),
+    path('delete-books-view/<int:pk>', views.BooksDeleteView.as_view()),
     #path('add-books/', views.add_books),
     path('add-books-view/', views.BooksCreareView.as_view()),
     path('update-books-view/<int:pk>', views.BooksUpdateView.as_view()),
     #path('update-book/<int:pk>', views.update_books),
     path('edit-success/', views.success),
-    path('',views.HomePage.as_view())
+    path('',views.HomePage.as_view()),
+    path('list-view/', views.BooksListView.as_view()),
 ]
