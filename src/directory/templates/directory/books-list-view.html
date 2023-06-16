@@ -19,9 +19,9 @@
             <td>{{ obj.pk }}</td>
             <td>{{ obj.name }}</td>
             <td>{{ obj.Genre }}</td>
-            <td><a href="/update-books-view/{{ obj.pk }}">update</a><br>
-                <a href="/delete-books-view/{{ obj.pk }}">delete</a><br>
-                <a href="/books-view/{{ obj.pk }}">detail</a></td>
+            <td><a href="{% url "update-books" pk=obj.pk %}">update</a><br>
+                <a href="{% url "delete-view" pk=obj.pk %}">delete</a><br>
+                <a href="{% url "books-view" pk=obj.pk %}">detail</a></td>
         </tr>
         {% endfor %}
     </table>

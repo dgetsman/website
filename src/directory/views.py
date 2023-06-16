@@ -50,30 +50,6 @@ def home_page(request):
                    template_name='directory/home-page.html',
                    context={'objects':Books})
 
-#def veiw_books(request, pk):
-    Books = models.Books.objects.get(pk=int(pk))
-    html = f"Books PK:{Books.pk} Books Name {Books.name}"
-    return HttpResponse(html)
-
-#def add_books(request):
-    if request.method == "GET":
-        form = forms.BooksModelForm()
-        return render(
-            request,
-            template_name='directory/add-books.html',
-            context={"greeting":"Add a new book", "form":form})
-    else:
-        books_form = forms.BooksModelForm(request.POST)
-        if books_form.is_valid():
-            new_book = books_form.save()
-            return HttpResponseRedirect("/edit-success")
-        else:
-            return render(
-            request,
-            template_name='directory/add-books.html',
-            context={"greeting":"Add a new book", "form":form}
-            ) 
-
 def success(request):
     return render(
     request,
@@ -81,21 +57,21 @@ def success(request):
         context={"message":"Book was edited"}
     )
 
-#def update_books(request, pk):
+def send_gmail(request):
     if request.method == "GET":
-        genre = models.Genre.objects.all()
-        book = models.Books.objects.get(pk=pk)
+        form = forms.ContactForm()
         return render(
             request,
-            template_name='directory/update-books.html',
-            context={"object":book, "genres":genre, "greeting":"Edit the book"})
-    else:
-        book_name = request.POST.get("book_name")
-        genre_id = request.POST.get("Genre")
-        genre_all = models.Genre.objects.all
-        genre = models.Genre.objects.get(pk=int(genre_id))
-        new_book = models.Books.objects.update(name=book_name, Genre=genre)
-        return render(request,
-            template_name='directory/success.html',
-            context={"genres":genre_all, "greeting":f"Book {book_name} was edited"}
+            template_name="directory/send-gmail.html",
+            context={"form":form}
         )
+    else:
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("/list-view")
+        else:
+            return render(
+                request,
+                template_name="directory/send-gmail.html",
+            context={"form":form}
+            )

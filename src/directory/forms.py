@@ -1,5 +1,6 @@
 from django import forms
 from . import models
+from django.core.exceptions import ValidationError
 
 GenreChoice = [(obj.pk, obj.name) for obj in models.Genre.objects.all()]
 
@@ -29,3 +30,22 @@ class BooksModelForm(forms.ModelForm):
         fields = [
             "Genre", "name"
         ]
+
+#def email(data):
+#    if data[-10:] !="@gmail.com":
+#        raise ValidationError("The adress must be like '@gmail.com'")
+
+#class TextArea(Widget):
+    template_name= "django/forms/widgets/textarea.html"
+
+class ContactForm(forms.Form):
+    contact_email = forms.EmailField(
+        required=True,
+        label="Enter your email"
+        #validators=[email]
+    )
+    message = forms.CharField(
+        required=True,
+        label="Enter your message",
+        widget=forms.Textarea()
+    )
