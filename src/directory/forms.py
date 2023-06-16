@@ -35,11 +35,11 @@ class BooksModelForm(forms.ModelForm):
 #    if data[-10:] !="@gmail.com":
 #        raise ValidationError("The adress must be like '@gmail.com'")
 
-#class TextArea(Widget):
-    template_name= "django/forms/widgets/textarea.html"
+#class TextArea(forms.Textarea):
+    template_name= "my-template.html"
 
 class ContactForm(forms.Form):
-    contact_email = forms.EmailField(
+    contact_gmail = forms.EmailField(
         required=True,
         label="Enter your email"
         #validators=[email]
@@ -49,3 +49,7 @@ class ContactForm(forms.Form):
         label="Enter your message",
         widget=forms.Textarea()
     )
+
+    def send_gmail(self):
+        contact_gmail=self.cleaned_data["contact_gmail"]
+        message = self.cleaned_data["message"]

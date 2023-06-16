@@ -25,7 +25,7 @@ class BooksUpdateView(generic.UpdateView):
     fields = [
         "Genre", "name"
     ]
-    success_url = "/edit-success"
+    success_url = "/success"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['message']='Edit the book'
@@ -68,7 +68,7 @@ def send_gmail(request):
     else:
         form = forms.ContactForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect("/list-view")
+            return HttpResponseRedirect("/success")
         else:
             return render(
                 request,

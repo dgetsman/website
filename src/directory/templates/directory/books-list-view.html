@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block TITLE %}Books list{% endblock TITLE %}
+{% block BODY %}
     <table border="1">
         <tr>
             <td>PK</td>
@@ -20,10 +14,9 @@
             <td>{{ obj.name }}</td>
             <td>{{ obj.Genre }}</td>
             <td><a href="{% url "update-books" pk=obj.pk %}">update</a><br>
-                <a href="{% url "delete-view" pk=obj.pk %}">delete</a><br>
+                <a href="{% url "delete-books" pk=obj.pk %}">delete</a><br>
                 <a href="{% url "books-view" pk=obj.pk %}">detail</a></td>
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock BODY %}
