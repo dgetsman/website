@@ -34,7 +34,7 @@ class BooksUpdateView(generic.UpdateView):
 class BooksDeleteView(generic.DeleteView):
     model = models.Books
     template_name = 'directory/delete-book.html'
-    success_url = "/dir"
+    success_url = "/directory/list-view"
 
 class BooksView(generic.DetailView):
     model = models.Books

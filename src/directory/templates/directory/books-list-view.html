@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block TITLE %}Books list{% endblock TITLE %}
 {% block BODY %}
-    <table border="1">
+    <table class="table table-striped">
         <tr>
             <td>PK</td>
             <td>Name</td>
@@ -13,9 +13,13 @@
             <td>{{ obj.pk }}</td>
             <td>{{ obj.name }}</td>
             <td>{{ obj.Genre }}</td>
-            <td><a href="{% url "update-books" pk=obj.pk %}">update</a><br>
-                <a href="{% url "delete-books" pk=obj.pk %}">delete</a><br>
-                <a href="{% url "books-view" pk=obj.pk %}">detail</a></td>
+            <td><a href="{% url "directory:update-books" pk=obj.pk %}" class="btn btn-primary">
+                <i class="bi bi-pencil-square"></i></a>
+                <a href="{% url "directory:delete-books" pk=obj.pk %}" class="btn btn-danger">
+                <i class="bi bi-trash3"></i></a>
+                <a href="{% url "directory:books-view" pk=obj.pk %}" class="btn btn-info">
+                <i class="bi bi-info-square"></i></a>
+            </td>
         </tr>
         {% endfor %}
     </table>
