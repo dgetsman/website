@@ -15,7 +15,7 @@ class BooksCreareView(generic.CreateView):
     template_name = 'directory/add-books.html'
     model = models.Books
     fields = [
-        "Genre", "name"
+        "Picture","Genre", "name"
     ]
     success_url = "/edit-success"
 

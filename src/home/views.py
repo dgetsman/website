@@ -4,3 +4,8 @@ from django.views import generic
 
 class HomePage(generic.TemplateView):
     template_name = "home/home-page.html"
+
+
+    #python -m pip install Pillow
+    #python.exe -m pip intstall
+    #pip freeze > req.txt

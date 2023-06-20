@@ -39,6 +39,10 @@ class Genre(models.Model):
         return self.name
 
 class Books(models.Model):
+    picture = models.ImageField(
+        verbose_name="Book_picture",
+        upload_to="uploads/%Y/%m/%d/"
+    )
     name = models.CharField(
         verbose_name='Name of books',
         max_length=50
