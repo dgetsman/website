@@ -28,7 +28,7 @@ class BooksModelForm(forms.ModelForm):
     class Meta:
         model = models.Books
         fields = [
-            "Genre", "name"
+            "picture", "Genre", "name"
         ]
 
 #def email(data):

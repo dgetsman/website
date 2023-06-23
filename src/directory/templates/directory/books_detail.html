@@ -2,6 +2,12 @@
 {% block TITLE %}Book detail{% endblock TITLE %}
 {% block BODY %}
     <h1>Book details</h1>
-    {{ object.name }}<br>
-    {{ object.Genre }}
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ object.name }}</h5>
+          <p class="card-text">{{ object.Genre }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 {% endblock BODY %}

@@ -15,9 +15,9 @@ class BooksCreareView(generic.CreateView):
     template_name = 'directory/add-books.html'
     model = models.Books
     fields = [
-        "Picture","Genre", "name"
+        "picture","Genre", "name"
     ]
-    success_url = "/edit-success"
+    success_url = "/directory/success"
 
 class BooksUpdateView(generic.UpdateView):
     template_name = 'directory/add-books.html'
@@ -25,7 +25,7 @@ class BooksUpdateView(generic.UpdateView):
     fields = [
         "Genre", "name"
     ]
-    success_url = "/success"
+    success_url = "/directory/success"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['message']='Edit the book'
