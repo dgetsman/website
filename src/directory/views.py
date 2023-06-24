@@ -7,19 +7,7 @@ from django.views import generic
 
 from . import models
 from . import forms
-from pathlib import Path
-from PIL import Image
 
-def resizer(image):
-    extention = image.file.name.split('.')[-1]
-    des_folder = Path(image.file.name).resolve().parent
-    file_name = 
-    m_basewidth = 150
-    im = Image.open(Image.file.name)
-    wpercent = (basewidth/float(im.size[0]))
-    hsize = int((float(im.size[1])*float(wpercent)))
-    im.thumbnail((baswidth,hsize), Image.Resampling.LANCZOS)
-    img.save(des_folder /)
 
 class HomePage(generic.TemplateView):
     template_name = "directory/home-page.html"
@@ -28,7 +16,7 @@ class BooksCreareView(generic.CreateView):
     template_name = 'directory/add-books.html'
     model = models.Books
     fields = [
-        "picture","Genre", "name"
+        "Picture", "Genre", "name"
     ]
     success_url = "/directory/success"
 

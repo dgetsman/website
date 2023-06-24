@@ -42,7 +42,7 @@ class Genre(models.Model):
 
 class Books(models.Model):
     picture = models.ImageField(
-        verbose_name="Picture",
+        verbose_name="picture",
         upload_to="uploads/%Y/%m/%d/"
     )
     name = models.CharField(
