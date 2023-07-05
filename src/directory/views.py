@@ -1,9 +1,10 @@
 from typing import Any, Dict
 from django.shortcuts import render
 from random import randint
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
+from django.urls import reverse_lazy
 
 from . import models
 from . import forms
@@ -40,7 +41,12 @@ class BooksDeleteView(generic.DeleteView):
 class BooksView(generic.DetailView):
     model = models.Books
     
-class BooksListView(generic.ListView):
+class BooksListView(PermissionRequiredMixin, generic.ListView):
+    login_url = reverse_lazy("manager:login")
+    permission_required = [
+        "directory.delete_Books",
+        "directory.add_Books"
+    ]
     model = models.Books
     template_name = 'directory/books-list-view.html'
     paginate_by = 10

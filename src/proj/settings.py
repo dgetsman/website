@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #'crispy_bootstrap5'
     'directory',
     'home',
+    'manager',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,8 @@ MEDIA_ROOT = '/home/Brontek/media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'
 
 #CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
