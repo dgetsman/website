@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'directory',
     'home',
     'manager',
+    'orders',
 ]
 
 MIDDLEWARE = [

@@ -60,6 +60,11 @@ class Books(models.Model):
         null=True,
         blank=True
     )
+    price = models.DecimalField(
+        verbose_name='Price',
+        max_digits=5,
+        decimal_places=2
+    )
 
     def __str__(self):
         return self.name
