@@ -24,7 +24,8 @@ urlpatterns = [
     path('',home_views.HomePage.as_view(),name="home-page"),
     path('admin/', admin.site.urls),
     path('directory/', include('directory.urls', namespace='directory')),
-    path('manager/', include('manager.urls', namespace='manager'))
+    path('manager/', include('manager.urls', namespace='manager')),
+    path('orders/', include('orders.urls', namespace='orders'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

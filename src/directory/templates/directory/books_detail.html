@@ -7,7 +7,19 @@
         <div class="card-body">
           <h5 class="card-title">{{ object.name }}</h5>
           <p class="card-text">{{ object.Genre }}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-primary">Go somewhere</a><br>
+          <div class="row">
+            <div class="cal-auto">
+              <input type="number" id="add-to-cart" class="form-control" min="1" max="100" value="1">
+              <button class="btn btn-success" onclick="AddToCart()">Get to cart</button>
+            </div>
+          </div>
         </div>
-      </div>
+    </div>
+<script>
+  function AddToCart() {
+    quantity = document.getElementById("add-to-cart")
+    window.location.replace()
+  }
+</script>
 {% endblock BODY %}

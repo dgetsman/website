@@ -23,7 +23,7 @@ class GoodInCart(models.Model):
     )
     good = models.ForeignKey(
         Books,
-        verbose_name=("Books"),
+        verbose_name="Books",
         on_delete=models.PROTECT
     )
     quantity = models.PositiveIntegerField(
