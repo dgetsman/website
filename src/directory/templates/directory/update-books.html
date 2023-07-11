@@ -11,5 +11,7 @@
             {% endfor %}
         </select><br>
         <input type="text" name="book_name" value="{{ object.name }}">
+        <input type="text" name="book_description" value="{{ object.description }}">
+        <input type="text" name="book_price" value="{{ object.price }}">
         <button type="submit">Edit book</button>
 {% endblock BODY %}

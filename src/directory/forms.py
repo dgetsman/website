@@ -15,6 +15,16 @@ class AddCityForm(forms.Form):
         required=True,
         label="Enter book name"
     )
+    description = forms.CharField(
+        max_length=1000,
+        required=True,
+        label="Enter book description"
+    )
+    price = forms.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
+ #   picture = forms.ImageField()
 
     def save(self):
         Genre = models.Genre.objects.get(
@@ -28,7 +38,7 @@ class BooksModelForm(forms.ModelForm):
     class Meta:
         model = models.Books
         fields = [
-            "picture", "Genre", "name"
+            "Genre", "name", "description", "price"
         ]
 
 #def email(data):
@@ -36,7 +46,7 @@ class BooksModelForm(forms.ModelForm):
 #        raise ValidationError("The adress must be like '@gmail.com'")
 
 #class TextArea(forms.Textarea):
-    template_name= "my-template.html"
+#    template_name= "my-template.html"
 
 class ContactForm(forms.Form):
     contact_gmail = forms.EmailField(

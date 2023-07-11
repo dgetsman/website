@@ -17,7 +17,7 @@ class BooksCreareView(generic.CreateView):
     template_name = 'directory/add-books.html'
     model = models.Books
     fields = [
-        "Picture", "Genre", "name"
+        "picture", "Genre", "name", "description", "price"
     ]
     success_url = "/directory/success"
 
@@ -25,7 +25,7 @@ class BooksUpdateView(generic.UpdateView):
     template_name = 'directory/add-books.html'
     model = models.Books
     fields = [
-        "Genre", "name"
+        "picture", "Genre", "name", "description", "price"
     ]
     success_url = "/directory/success"
     def get_context_data(self, **kwargs):

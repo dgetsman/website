@@ -5,8 +5,10 @@
     <div class="card" style="width: 18rem;">
         <img src={{ object.picture.url }} class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{ object.name }}</h5>
-          <p class="card-text">{{ object.Genre }}</p>
+          <h1 class="card-title">{{ object.name }}</h1>
+          <h5 class="card-text">{{ object.Genre }}</h5>
+          <p class='card-text'>{{ object.description }}</p>
+          <h5 class="card-title">{{ object.price }}</h5>
           <a href="#" class="btn btn-primary">Go somewhere</a><br>
           <div class="row">
             <div class="cal-auto">
@@ -19,7 +21,7 @@
 <script>
   function AddToCart() {
     quantity = document.getElementById("add-to-cart")
-    window.location.replace()
+    window.location.href = "{% url 'orders:cart-view'%}" + "?good_id={{ object.pk }}&quantity=" + quantity.value
   }
 </script>
 {% endblock BODY %}
