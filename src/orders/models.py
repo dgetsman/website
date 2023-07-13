@@ -13,6 +13,20 @@ class Cart(models.Model):
         null=True,
         blank=True
     )
+    
+    @property
+    def total_price(self):
+        total_price = 0
+        for good_in_cart in self.goods.all():
+            total_price += good_in_cart.price
+        return total_price
+
+    @property
+    def total_quantity(self):
+        total_quantity = 0
+        for good_in_cart in self.goods.all():
+            total_quantity += good_in_cart.quantity
+        return total_quantity
 
 class GoodInCart(models.Model):
     cart = models.ForeignKey(
@@ -64,12 +78,12 @@ class Order(models.Model):
     delivery_address = models.TextField(
         verbose_name="delivery_address"
     )
-    status = models.ForeignKey(
+    Status = models.ForeignKey(
         Status,
         verbose_name="order_status",
         on_delete=models.PROTECT
     )
-    cart = models.OneToOneField(
+    Cart = models.OneToOneField(
         Cart,
         verbose_name="cart",
         on_delete=models.PROTECT

@@ -5,7 +5,48 @@
 {% block BODY %}
 
 <h1>Cart</h1>
-
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for good_in_cart in object.goods.all %}    
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ good_in_cart.good.name }}</td>
+        <td>
+          <button type="button" onclick="deleteGood({{ good_in_cart.good.pk }})" class="btn btn-outline-danger btn-sm">-</button>
+          {{ good_in_cart.quantity }}
+          <button type="button" onclick="addGood({{ good_in_cart.good.pk }})" class="btn btn-outline-success btn-sm">+</button>
+        </td>
+        <td>{{ good_in_cart.price }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2">Total:</td>
+        <td colspan="1">{{ object.total_quantity }}</td>
+        <td colspan="1">{{ object.total_price }}</td>
+    </tbody>
+  </table>
+  <a class="btn btn-info" href="{% url 'orders:create-order' %}">Create Order</a>
+<script>
+    function addGood(pk) {
+      console.log("add" + pk)
+      redirect("add", pk)
+    }
+    function deleteGood(pk) {
+      console.log("delete" + pk)
+      redirect("delete", pk)
+    }
+    function redirect(action, pk) {
+      window.location.href = "{% url 'orders:cart-edit-view' %}" + `?action=${action}&good=${pk}`
+    }
+</script>
 {% endblock BODY %}
 
 

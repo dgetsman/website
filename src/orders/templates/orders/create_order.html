@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block TITLE %}something{% endblock TITLE %}
+
+{% block BODY %}
+
+<h1>Order</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for good_in_cart in object.goods.all %}    
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ good_in_cart.good.name }}</td>
+        <td>{{ good_in_cart.quantity }}</td>
+        <td>{{ good_in_cart.price }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2">Total:</td>
+        <td colspan="1">{{ object.total_quantity }}</td>
+        <td colspan="1">{{ object.total_price }}</td>
+    </tbody>
+  </table>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+{% endblock BODY %}
