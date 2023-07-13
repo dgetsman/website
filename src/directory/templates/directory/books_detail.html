@@ -9,7 +9,7 @@
           <h5 class="card-text">{{ object.Genre }}</h5>
           <p class='card-text'>{{ object.description }}</p>
           <h5 class="card-title">{{ object.price }}</h5>
-          <a href="#" class="btn btn-primary">Go somewhere</a><br>
+          <a href="{% url "directory:list-view" %}" class="btn btn-primary">Go back</a><br>
           <div class="row">
             <div class="cal-auto">
               <input type="number" id="add-to-cart" class="form-control" min="1" max="100" value="1">
